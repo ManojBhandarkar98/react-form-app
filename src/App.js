@@ -17,14 +17,14 @@ function App() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email:""
+    email: ""
   });
 
   function changeHandler(event) {
     setFormData(prevFormData => {
       return {
         ...prevFormData,
-        [event.target.name] : event.target.value
+        [event.target.name]: event.target.value
       }
     })
   }
@@ -33,11 +33,11 @@ function App() {
     <div className="App">
       <form>
         <label>First Name : </label>
-        <input type='text' placeholder='first name' onChange={changeHandler} name='firstName' /><br/>
+        <input type='text' placeholder='first name' onChange={changeHandler} name='firstName' value={formData.firstName}/><br />
         <label>Last Name : </label>
-        <input type='text' placeholder='last name' onChange={changeHandler} name='lastName' /><br/>
+        <input type='text' placeholder='last name' onChange={changeHandler} name='lastName' value={formData.lastName}/><br />
         <label>Email : </label>
-        <input type='email' placeholder='enter your email here' onChange={changeHandler} name='email' />
+        <input type='email' placeholder='enter your email here' onChange={changeHandler} name='email'value={formData.email} />
       </form>
     </div>
   );
