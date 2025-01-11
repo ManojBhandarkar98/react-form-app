@@ -14,17 +14,20 @@ function App() {
   // }
 
   //Handling Multiple state
+  //controlled component - all state track using formData and in all button track using value attribute.
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: ""
+    email: "",
+    Comments: "",
+    isVisible: true
   });
 
   function changeHandler(event) {
     setFormData(prevFormData => {
       return {
         ...prevFormData,
-        [event.target.name]: event.target.value
+        [event.target.name]: type === "checkbox" ? checked : event.target.value
       }
     })
   }
@@ -33,11 +36,15 @@ function App() {
     <div className="App">
       <form>
         <label>First Name : </label>
-        <input type='text' placeholder='first name' onChange={changeHandler} name='firstName' value={formData.firstName}/><br />
+        <input type='text' placeholder='first name' onChange={changeHandler} name='firstName' value={formData.firstName} /><br /><br />
         <label>Last Name : </label>
-        <input type='text' placeholder='last name' onChange={changeHandler} name='lastName' value={formData.lastName}/><br />
+        <input type='text' placeholder='last name' onChange={changeHandler} name='lastName' value={formData.lastName} /><br /><br />
         <label>Email : </label>
-        <input type='email' placeholder='enter your email here' onChange={changeHandler} name='email'value={formData.email} />
+        <input type='email' placeholder='enter your email here' onChange={changeHandler} name='email' value={formData.email} /><br /><br />
+        <label>Comments : </label>
+        <textarea placeholder='enter your comments here' name='comments' value={formData.Comments} /><br /><br />
+        <input type='checkbox' onChange={changeHandler} name='isVisible' id='isVisible' checked={formData.isVisible} />
+        <label htmlFor='isVisible'>Am I Visible ?</label>
       </form>
     </div>
   );
