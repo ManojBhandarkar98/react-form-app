@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
@@ -19,15 +18,17 @@ function App() {
     firstName: "",
     lastName: "",
     email: "",
-    Comments: "",
-    isVisible: true
+    comments: "",
+    isVisible: true,
+    mode: ""
   });
 
   function changeHandler(event) {
+    const { name, value, type, checked } = event.target;
     setFormData(prevFormData => {
       return {
         ...prevFormData,
-        [event.target.name]: type === "checkbox" ? checked : event.target.value
+        [name]: type === "checkbox" ? checked : value
       }
     })
   }
@@ -42,9 +43,13 @@ function App() {
         <label>Email : </label>
         <input type='email' placeholder='enter your email here' onChange={changeHandler} name='email' value={formData.email} /><br /><br />
         <label>Comments : </label>
-        <textarea placeholder='enter your comments here' name='comments' value={formData.Comments} /><br /><br />
+        <textarea placeholder='enter your comments here' name='comments' value={formData.comments} /> <br /><br />
         <input type='checkbox' onChange={changeHandler} name='isVisible' id='isVisible' checked={formData.isVisible} />
-        <label htmlFor='isVisible'>Am I Visible ?</label>
+        <label htmlFor='isVisible'>Am I Visible ?</label><br /><br />
+        <input type='radio' onChange={changeHandler} name='mode' value="Online Mode" id='Online-Mode' />
+        <label htmlFor='Online-Mode'>Online Mode</label>
+        <input type='radio' onChange={changeHandler} name='mode' value="Offline Mode" id='Offline-Mode' />
+        <label htmlFor='Offline-Mode'>Offline Mode</label>
       </form>
     </div>
   );
