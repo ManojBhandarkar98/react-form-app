@@ -46,9 +46,9 @@ function App() {
         <textarea placeholder='enter your comments here' name='comments' value={formData.comments} /> <br /><br />
         <input type='checkbox' onChange={changeHandler} name='isVisible' id='isVisible' checked={formData.isVisible} />
         <label htmlFor='isVisible'>Am I Visible ?</label><br /><br />
-        <input type='radio' onChange={changeHandler} name='mode' value="Online Mode" id='Online-Mode' />
+        <input type='radio' onChange={changeHandler} name='mode' value="Online Mode" id='Online-Mode' checked={formData.mode === "Online-Mode"} />
         <label htmlFor='Online-Mode'>Online Mode</label>
-        <input type='radio' onChange={changeHandler} name='mode' value="Offline Mode" id='Offline-Mode' />
+        <input type='radio' onChange={changeHandler} name='mode' value="Offline Mode" id='Offline-Mode' checked={formData.mode === "Offline-Mode"}/>
         <label htmlFor='Offline-Mode'>Offline Mode</label>
       </form>
     </div>
